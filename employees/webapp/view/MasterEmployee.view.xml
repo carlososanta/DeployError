@@ -1,0 +1,33 @@
+<mvc:View
+    controllerName="logaligroup.employees.controller.MasterEmployee"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns:core="sap.ui.core"
+    displayBlock="true"
+    xmlns="sap.m"
+>
+    
+                <Page id="page" title="{i18n>title}">
+                    <content>
+                        <HBox wrap="Wrap">
+                            <Label id="labelEmployee" labelFor="inputEmpleyee" text="{i18n>labelEmployee}" class="sapUiSmallMargin"/>
+                            <Input id="inputEmpleyee" value="{jsonCountries>/EmployeeId}" maxLength="6" width="200px" class="sapUiSmallMarginEnd" />
+                            <Label id="labelCountry" labelFor="slCountry" text="{i18n>labelCountry}" class="sapUiSmallMargin" visible="true"/>
+                            <Select id="slCountry" selectedKey="{jsonCountries>/CountryKey}" forceSelection="false" visible="true" items="{jsonCountries>/ListCountry}" >
+                                <items>
+                                    <core:Item key="{jsonCountries>Key}" text="{jsonCountries>Text}"/>                                    
+                                </items>
+                            </Select>
+                            <Button id="btnFilter" text="{i18n>btnFilter}" icon="sap-icon://search" press="onFilter" class="sapUiSmallMarginEnd" />
+                            <Button id="btnClearFilter" text="{i18n>btnClearFilter}" icon="sap-icon://clear-filter" press="onClearFilter" class="sapUiSmallMarginEnd" />
+                        </HBox>
+                        <Button id="BtnShowCity" text="{i18n>BtnShowCity}" press="onShowCity" visible="{jsonConfig>/visibleBtnShowCity}"/>
+                        <Button id="BtnHideCity" text="{i18n>BtnHideCity}" press="onHideCity" visible="{jsonConfig>/visibleBtnHideCity}"/>
+                        <!-- <Button id="btnHideShow" text="{i18n>btnShow}" press="onHideShow" class="sapUiSmallMargin" /> -->
+                        <HBox >                            
+                            <core:Fragment fragmentName="logaligroup.employees.fragment.TableEmployee" type="XML" />
+                        </HBox>
+                        
+                            <!-- <HBox id="ordersTable"></HBox> -->
+                    </content>
+                </Page>
+</mvc:View>
